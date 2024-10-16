@@ -1,16 +1,26 @@
-import React from 'react';
+import html2pdf from "html2pdf.js/dist/html2pdf.min";
+import "./App.css";
 
 function App() {
+  const pdfJSX = () => {
+    return (
+      <>
+        <h1>JSX to PDF Convert Example</h1>
+        <h2>Hello React</h2>
+      </>
+    );
+  };
+
+  const printHandler = () => {
+    const printElement = pdfJSX();
+    console.log(printElement);
+
+    html2pdf().from(printElement).save();
+  };
+
   return (
-    <div style={{ textAlign: 'center' }}>
-      <header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+    <div className="App">
+      <button onClick={printHandler}>Print</button>
     </div>
   );
 }
