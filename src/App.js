@@ -1,3 +1,4 @@
+import ReactDOMServer from "react-dom/server";
 import html2pdf from "html2pdf.js/dist/html2pdf.min";
 import "./App.css";
 
@@ -12,8 +13,8 @@ function App() {
   };
 
   const printHandler = () => {
-    const printElement = pdfJSX();
-    console.log(printElement);
+    const printElement = ReactDOMServer.renderToString(pdfJSX());
+    // const printElement = pdfJSX();
 
     html2pdf().from(printElement).save();
   };
